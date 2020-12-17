@@ -42,4 +42,4 @@ sudo rmmod myled
 ```
 
 ## ライセンス
-[GNU General Public License v3.0](https://github.com/Yuya-Takeuchi/robosys_kadai1) 
+[GNU General Public License v3.0](https://github.com/Yuya-Takeuchi/robosys_kadai1/blob/main/LICENSE) 
