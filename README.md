@@ -5,7 +5,7 @@
 コードはのを参考にしました。
 
 ## 動作環境
-OS：Ubuntu　18.04
+OS：Ubuntu 18.04
 
 ## 使用したもの
 - Raspberry Pi 4
@@ -17,7 +17,7 @@ OS：Ubuntu　18.04
 以下の図のように回路を作成した
 
 ## 動画
-
+実際に動かしたときの動画は[こちら](https://www.youtube.com/watch?v=HaBOnk_5vlE&feature=youtu.be)です
 
 ## 実行手順
 以下のコマンドを順番に行う
