@@ -13,10 +13,6 @@ OS：Ubuntu 18.04
 - 電子ブザー
 - ジャンパー線×２
 
-## 回路
-以下の図のように回路を作成しました
-
-
 ## 動画
 実際に動かしたときの動画は[こちら](https://www.youtube.com/watch?v=HaBOnk_5vlE&feature=youtu.be)です
 
