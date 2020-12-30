@@ -1,7 +1,10 @@
-#include <linux/module.h>                                                              
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2020 Yuya Takeuchi. All rights reserved.
+
+#include <linux/module.h>                                                        
 #include <linux/fs.h>
 #include <linux/cdev.h>
-#include <linux/device.h>                                                              
+#include <linux/device.h>                                                         
 #include <linux/uaccess.h>
 #include <linux/io.h>
 #include <linux/delay.h>
@@ -31,11 +34,13 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 		 s++;	  
 		}
 		else if (c == '2'){
-		while(s < 2){								                  gpio_base[7] = 1 << 25;                 
-		 msleep(200);	   
+		while(s < 2){	
+		 gpio_base[7] = 1 << 25;                 
+		 msleep(200);	 
 	         gpio_base[10] = 1 << 25;
       	         ssleep(1);
-	         s++;									                  }
+	         s++;
+		}
 		}   
 		else if(c == '3'){
 		while(s < 3){ 
@@ -45,9 +50,11 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 		   ssleep(1);            
 		   s++;	
 		   }
-		}                                                                                      else if(c == '4'){
+		}      
+		else if(c == '4'){
 		while(h < 2){
-		 while(s < 3){								                  gpio_base[7] = 1 << 25;
+		 while(s < 3){
+	           gpio_base[7] = 1 << 25;
 	           ssleep(0.5);
 	           gpio_base[10] = 1 << 25;
 	           ssleep(1);
@@ -79,13 +86,16 @@ static int __init init_mod(void)
 {
        	int retval;
 	retval = alloc_chrdev_region(&dev, 0, 1, "myled"):	
-        if(retval < 0){
+        
+	if(retval < 0){
            printk(KERN_ERR "alloc_chrdev_region failed.\n");
 	   return retval;								        }
-         printk(KERN_INFO "%s is loaded.major:%d\n",_FILE_,MAJOR(dev));
-         cdev_init(&cdv, &led_fops);
-         retval = cdev_add(&cdv, dev, 1);
-	 if(retval < 0){
+           
+	   printk(KERN_INFO "%s is loaded.major:%d\n",_FILE_,MAJOR(dev));
+           cdev_init(&cdv, &led_fops);
+           retval = cdev_add(&cdv, dev, 1);
+	   
+	   if(retval < 0){
 		 printk(KERN_ERR "cdev_add failed. major:%d. minor:%d\n", MAJOR(dev),MINOR(dev));
 		 return retval;  
 	 }			         
